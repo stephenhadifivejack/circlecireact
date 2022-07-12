@@ -45,12 +45,14 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
+      - restore_cache_cmd
       - run: yarn build
 
   test:
     executor: docker-executor
     steps:
       - checkout
+      - restore_cache_cmd
       - run: yarn test
 
 
