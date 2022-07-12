@@ -1,6 +1,21 @@
 
 version: 2.1
 
+commands:
+  restore_cache_cmd:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies
+  save_cache_cmd:
+    steps:
+      -save_cache:
+        key: v1-dependencies
+        paths: 
+          - my-file.txt
+          - circlecireact/node_modules
+        
+
 executors:
   docker-executor:
     docker:
@@ -22,15 +37,9 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies
+      - restore_cache_cmd
       - run: yarn install      
-      - save_cache:
-          key: v1-dependencies
-          paths: 
-            - my-file.txt
-            - circlecireact/node_modules
+      - save_cache_cmd
   
   build:
     executor: docker-executor
