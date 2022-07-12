@@ -6,11 +6,11 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
+            - v3-dependencies-{{ checksum "package.json" }}
   save_cache_cmd:
     steps:
       - save_cache:
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v3-dependencies-{{ checksum "package.json" }}
           paths: 
             - my-file.txt
             - node_modules
