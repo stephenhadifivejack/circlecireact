@@ -1,0 +1,61 @@
+
+version: 2.1
+
+executors:
+  docker-executor:
+    docker:
+      - image: cimg/node:18.4.0
+
+jobs:
+  check-yarn-version:
+    executor: docker-executor
+    steps:
+      - checkout
+      - run: yarn --version    
+  echo-env:
+    executor: docker-executor
+    steps:
+      - checkout 
+      - run: echo $MY_ENV_VAR
+  
+  install-dependencies:
+    executor: docker-executor
+    steps:
+      - checkout
+      # - restore_cache:
+      #   keys:
+      #     - v1-dependencies
+      - run: yarn install      
+      # - save_cache:
+      #     key: v1-dependencies
+      #     paths: 
+      #       - my-file.txt
+  
+  build:
+    executor: docker-executor
+    steps:
+      - checkout
+      - run: yarn build
+
+  test:
+    executor: docker-executor
+    steps:
+      - checkout
+      - run: yarn test
+
+
+workflows:
+  check-yarn-version:
+    jobs:
+      - check-yarn-version
+  echo-env:
+    jobs:
+      - echo-env:
+          context:
+            - my-context
+
+  build-and-test:
+    jobs:
+      - install-dependencies
+      - build
+      - test
