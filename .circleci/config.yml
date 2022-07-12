@@ -13,7 +13,7 @@ commands:
           key: v2-dependencies-{{ checksum "package.json" }}
           paths: 
             - my-file.txt
-            - circlecireact/node_modules
+            - node_modules
         
 
 executors:
