@@ -56,7 +56,7 @@ workflows:
 
   build-and-test:
     jobs:
-      - install-dependencies:        
+      - install-dependencies        
       - build:
           requires:
             - install-dependencies
