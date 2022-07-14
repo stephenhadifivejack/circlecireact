@@ -85,7 +85,11 @@ workflows:
                 - beta
       - install-dependencies:
           requires:
-            - hold
+            - hold:
+                filters:
+                  branches:
+                    only:
+                      - beta
       - build:
           requires:
             - install-dependencies
