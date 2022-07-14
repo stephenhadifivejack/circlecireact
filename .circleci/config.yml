@@ -50,12 +50,18 @@ jobs:
       - checkout
       - restore_cache_cmd
       - run: yarn build
+      - persist_to_workspace:
+          root: . 
+          paths:
+            - .next
 
   test:
     executor: docker-executor
     steps:
       - checkout
       - restore_cache_cmd
+      - attach_workspace:
+          at: .next
       - run: yarn test
 
 
