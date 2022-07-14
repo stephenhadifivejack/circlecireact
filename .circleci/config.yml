@@ -77,6 +77,8 @@ workflows:
 
   build-and-test:
     jobs:    
+      - hold:
+          type: approval
       - install-dependencies
       - build:
           requires:
