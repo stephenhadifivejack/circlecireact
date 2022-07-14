@@ -78,6 +78,4 @@ workflows:
       - test:
           requires:
             - build            
-    requires:
-      - install-and-cache
   
