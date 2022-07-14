@@ -77,19 +77,9 @@ workflows:
 
   build-and-test:
     jobs:    
-      - hold:
-          type: approval
-          filters: 
-            branches:
-              only:
-                - beta
       - install-dependencies:
           requires:
             - hold:
-                filters:
-                  branches:
-                    only:
-                      - beta
       - build:
           requires:
             - install-dependencies
