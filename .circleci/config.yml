@@ -79,7 +79,13 @@ workflows:
     jobs:    
       - hold:
           type: approval
-      - install-dependencies
+          filters: 
+            branches:
+              only:
+                -beta
+      - install-dependencies:
+          requires:
+            - hold
       - build:
           requires:
             - install-dependencies
