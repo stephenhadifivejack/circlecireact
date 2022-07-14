@@ -72,7 +72,7 @@ workflows:
   build-and-test:
     jobs:    
       - install-dependencies
-      - build
+      - build:
           requires:
             - install-dependencies
       - test:
