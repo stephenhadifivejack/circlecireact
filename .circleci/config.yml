@@ -75,15 +75,35 @@ workflows:
           context:
             - my-context
 
-  build-and-test:
+  build-and-test-approval:    
     jobs:    
+      - request-approval:
+          type: approval
+          filters: 
+            branches:
+              only:
+                - beta
       - install-dependencies:
           requires:
-            - hold:
+            - request-approval
       - build:
           requires:
             - install-dependencies
       - test:
           requires:
-            - build            
+            - build     
+
+  build-and-test:
+    filters:
+      branches:
+        ignore:
+          - beta
+    jobs:    
+      - install-dependencies:
+      - build:
+          requires:
+            - install-dependencies
+      - test:
+          requires:
+            - build          
   
