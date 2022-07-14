@@ -94,12 +94,15 @@ workflows:
             - build     
 
   build-and-test:
-    filters:
-      branches:
-        ignore:
-          - beta
-    jobs:    
+    jobs:  
+      - ignore-beta:
+          filters: 
+            branches:
+              ignore:
+                - beta  
       - install-dependencies:
+          requires: 
+            - ignore-beta            
       - build:
           requires:
             - install-dependencies
