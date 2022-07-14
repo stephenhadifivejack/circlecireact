@@ -82,7 +82,7 @@ workflows:
           filters: 
             branches:
               only:
-                -beta
+                - beta
       - install-dependencies:
           requires:
             - hold
