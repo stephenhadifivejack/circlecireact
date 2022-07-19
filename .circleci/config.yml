@@ -119,5 +119,8 @@ workflows:
             - install-dependencies
       - test:
           requires:
-            - build          
+            - build         
+      - deploy:
+          requires:
+            - build 
   
