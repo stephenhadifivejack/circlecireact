@@ -72,7 +72,7 @@ jobs:
       - attach_workspace:
           at: workspace
       - run: npm install -g --silent gh-pages@2.0.1      
-      - run: ls workspace/out
+      - run: ls workspace
       - add_ssh_keys:
           fingerprints:
             - "73:c3:83:34:bc:9c:25:19:45:e5:46:a5:12:6f:5e:71"
