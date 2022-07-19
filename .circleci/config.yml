@@ -78,7 +78,7 @@ jobs:
             - "73:c3:83:34:bc:9c:25:19:45:e5:46:a5:12:6f:5e:71"
       - run: git config user.email "stephenhadi@fivejack.com"
       - run: git config user.name "stephenhadifivejack"
-      - run: gh-pages --dotfiles --message "[skip ci] Updates" --dist workspace/out/index.html
+      - run: gh-pages --dotfiles --message "[skip ci] Updates" --dist workspace/out
 
 
 
