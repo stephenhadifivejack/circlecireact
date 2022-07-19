@@ -69,6 +69,8 @@ jobs:
     steps:
       - checkout
       - restore_cache_cmd
+      - attach_workspace:
+          at: .next
       - run: npm install -g --silent gh-pages@2.0.1
       - add_ssh_keys:
           fingerprints:
