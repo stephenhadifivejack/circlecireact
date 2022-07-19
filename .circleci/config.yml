@@ -50,7 +50,7 @@ jobs:
       - checkout
       - restore_cache_cmd
       - run: yarn build
-      - run: mkdir workspace && mv out workspace/out
+      # - run: mkdir workspace && mv out workspace/out
       - persist_to_workspace:
           root: .
           paths: .next
