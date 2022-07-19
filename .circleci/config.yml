@@ -77,7 +77,7 @@ jobs:
             - "73:c3:83:34:bc:9c:25:19:45:e5:46:a5:12:6f:5e:71"
       - run: git config user.email stephenhadifivejack@gmail.com
       - run: git config user.name stephenhadifivejack
-      - run: gh-pages --dist .next
+      - run: gh-pages --dist .
 
 
 
